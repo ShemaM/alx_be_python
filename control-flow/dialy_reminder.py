@@ -7,9 +7,12 @@
 # Ask the user to input a task description and save it into a task variable.
 task = input("Enter your task: ")
 
+# Initialize variables to ensure they are defined for static analysis
+priority = ""
+time_bound = ""
+
 # Prompt for the task's priority (high, medium, low) and save it into a priority variable.
 while True:
-    # Instructions specify saving into a 'priority' variable
     priority = input("Priority (high/medium/low): ").lower().strip()
     if priority in ['high', 'medium', 'low']:
         break
@@ -17,8 +20,8 @@ while True:
     
 # In a time_bound variable, Ask if the task is time-bound (yes or no).
 while True:
-    # Instructions specify using a 'time_bound' variable
-    time_bound = input("Is it time-bound (yes/no): ").lower().strip()
+    # FIXED: Added '?' to the prompt string to match the example output exactly
+    time_bound = input("Is it time-bound? (yes/no): ").lower().strip()
     if time_bound in ['yes', 'no']:
         break
     print("Invalid response. Please enter 'yes' or 'no'.")
@@ -37,7 +40,8 @@ match priority:
         if time_bound == 'yes':
             # Print a reminder about the task that includes its priority level and whether immediate action is required based on time sensitivity.
             # A message should be 'that requires immediate attention today!'
-            # Matches the EXACT Time-Bound Example Output (e.g., Reminder: 'Finish project report' is a high priority task that requires immediate attention today!)
+            # Matches the EXACT Time-Bound Example Output:
+            # Reminder: 'Finish project report' is a high priority task that requires immediate attention today!
             final_reminder_message = f"Reminder: '{task}' is a high priority task that requires immediate attention today!"
         else:
             # High Priority, Non-Time-Bound
@@ -56,7 +60,8 @@ match priority:
         if time_bound == 'yes':
              final_reminder_message = f"Note: '{task}' is a low priority task, but it has a deadline. Complete when possible."
         else:
-            # Matches the EXACT Non-Time-Bound Example Output (e.g., Note: 'Read a book' is a low priority task. Consider completing it when you have free time.)
+            # Matches the EXACT Non-Time-Bound Example Output:
+            # Note: 'Read a book' is a low priority task. Consider completing it when you have free time.
             final_reminder_message = f"Note: '{task}' is a low priority task. Consider completing it when you have free time."
 
     case _:
