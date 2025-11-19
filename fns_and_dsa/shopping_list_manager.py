@@ -8,6 +8,15 @@ def display_menu():
     print("4. Exit")
 
 
+def display_list(shopping_list):
+    if not shopping_list:
+        print("The shopping list is empty.")
+    else:
+        print("Current Shopping List:")
+        for i, item in enumerate(shopping_list, 1):
+            print(f"{i}. {item}")
+
+
 def main():
     shopping_list = []
 
@@ -20,10 +29,11 @@ def main():
             continue
 
         if choice == 1:
-            item = input("Enter item to add: ").strip()
+            item = input("Enter the item to add: ").strip()
             if item:
                 shopping_list.append(item)
                 print(f"{item} added to the shopping list.")
+                display_list(shopping_list)
             else:
                 print("Item cannot be empty.")
 
@@ -31,20 +41,16 @@ def main():
             if not shopping_list:
                 print("The shopping list is empty. Nothing to remove.")
                 continue
-            item = input("Enter item to remove: ").strip()
+            item = input("Enter the item to remove: ").strip()
             if item in shopping_list:
                 shopping_list.remove(item)
                 print(f"{item} removed from the shopping list.")
+                display_list(shopping_list)
             else:
                 print(f"{item} not found in the shopping list.")
 
         elif choice == 3:
-            if not shopping_list:
-                print("The shopping list is empty.")
-            else:
-                print("Current Shopping List:")
-                for i, item in enumerate(shopping_list, 1):
-                    print(f"{i}. {item}")
+            display_list(shopping_list)
 
         elif choice == 4:
             print("Goodbye!")
