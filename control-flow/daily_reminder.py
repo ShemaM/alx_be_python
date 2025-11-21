@@ -1,5 +1,3 @@
-# daily_reminder.py
-
 # Ask for the task
 task = input("Enter your task: ")
 
@@ -17,18 +15,19 @@ while True:
         break
     print("Invalid input. Please enter yes or no.")
 
-# Process task using match-case
+# Build the core message using match-case
 match priority:
     case "high":
-        message = f"Reminder: '{task}' is a high priority task"
+        body = f"'{task}' is a high priority task"
     case "medium":
-        message = f"Reminder: '{task}' is a medium priority task"
+        body = f"'{task}' is a medium priority task"
     case "low":
-        message = f"Note: '{task}' is a low priority task. Consider completing it when you have free time."
+        body = f"'{task}' is a low priority task. Consider completing it when you have free time."
 
-# Modify message if time-bound
+# Modify the message if the task is time-bound (yes)
 if time_bound == "yes":
-    message += " that requires immediate attention today!"
+    # If it's low priority but time-bound, still emphasize immediate attention.
+    body += " that requires immediate attention today!"
 
-# Print the final reminder
-print(message)
+# Print the final reminder with the literal "Reminder:" prefix
+print(f"Reminder: {body}")
