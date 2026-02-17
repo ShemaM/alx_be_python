@@ -1,5 +1,6 @@
 from book_class import Book
 from library_system import Book as BaseBook, EBook, PrintBook, Library
+from polymorphism_demo import Rectangle, Circle
 
 def demo_book_class():
     print("=== Demo: book_class ===")
@@ -26,6 +27,18 @@ def demo_library_system():
     my_library.list_books()
 
 
+def demo_polymorphism_demo():
+    print("\n=== Demo: polymorphism_demo ===")
+    shapes = [
+        Rectangle(10, 5),
+        Circle(7)
+    ]
+
+    for shape in shapes:
+        print(f"The area of the {shape.__class__.__name__} is: {shape.area()}")
+
+
 if __name__ == "__main__":
     demo_book_class()
     demo_library_system()
+    demo_polymorphism_demo()
