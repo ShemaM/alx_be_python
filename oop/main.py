@@ -1,6 +1,7 @@
 from book_class import Book
 from library_system import Book as BaseBook, EBook, PrintBook, Library
 from polymorphism_demo import Rectangle, Circle
+from class_static_methods_demo import Calculator
 
 def demo_book_class():
     print("=== Demo: book_class ===")
@@ -38,7 +39,20 @@ def demo_polymorphism_demo():
         print(f"The area of the {shape.__class__.__name__} is: {shape.area()}")
 
 
+def demo_class_static_methods():
+    print("\n=== Demo: class vs static methods ===")
+
+    # Using the static method
+    sum_result = Calculator.add(10, 5)
+    print(f"The sum is: {sum_result}")
+
+    # Using the class method
+    product_result = Calculator.multiply(10, 5)
+    print(f"The product is: {product_result}")
+
+
 if __name__ == "__main__":
     demo_book_class()
     demo_library_system()
     demo_polymorphism_demo()
+    demo_class_static_methods()
